@@ -1,4 +1,9 @@
-
-<input #x type="number" [(ngModel)]="id">
-<button (click)="getUser()">get User</button>
-<button (click)="checkRefId(x)">check</button>
+<div><input #id="ngModel" [(ngModel)]="user.id" required></div>
+<div *ngIf="!id.touched">id invalid</div>
+<br>
+<div><input #name="ngModel" [(ngModel)]="user.name" required></div>
+<div *ngIf="!name.touched">name invalid</div>
+<br>
+<button [disabled]="!name.valid && !id.valid" (click)="save(id, name)">save</button>
+<br>
+<div *ngIf="!name.valid && !id.valid">you must fill all field</div>

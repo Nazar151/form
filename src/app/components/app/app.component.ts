@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {UserService} from "../service/user.service";
 import {User} from "../models/User";
+import {NgModel} from "@angular/forms";
 
 
 @Component({
@@ -10,20 +11,17 @@ import {User} from "../models/User";
 })
 export class AppComponent {
 
-  id = 0;
-
-  user: User
+  user : User = {
+    id: 1,
+    name: 'Nazar'
+  }
 
   constructor(private userService : UserService) {
 
   }
 
 
-  getUser(): void {
-    this.userService.getUser(this.id).subscribe(value => console.log(value))
-  }
-
-  checkRefId(x: HTMLInputElement): void {
-    console.log(x)
+  save(id: NgModel, name: NgModel):void {
+    console.log(id)
   }
 }
