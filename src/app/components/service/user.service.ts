@@ -19,7 +19,7 @@ export class UserService {
     return  this.httpClient.get<User>(this.url + '/' + id)
   }
 
-  getUserByIdOrName(id: number, name: string): User[] {
+  getUserByIdOrName(user: User): User[] {
     this.httpClient.get<User[]>(this.url)
       .subscribe( value => {
         const result = value.filter(user => user.id === user.id || user.name?.toLowerCase().includes(user.name.toLowerCase()))

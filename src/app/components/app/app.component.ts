@@ -13,15 +13,12 @@ import {UserService} from "../service/user.service";
 export class AppComponent {
 
   user: User = {}
-  id: number
-  name: string
-
 
   constructor(private userService : UserService) {
 
   }
   search(): void {
-    console.log(this.userService.getUserByIdOrName(this.id, this.name));
+    console.log(this.userService.getUserByIdOrName(this.user));
 
   }
 
