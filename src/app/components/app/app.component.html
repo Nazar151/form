@@ -1,6 +1,8 @@
-<div><input type="number" [(ngModel)]="user.id" #id="ngModel" required placeholder="enter"></div>
-<div *ngIf="!id.touched">fill id</div>
-<div><input type="string" [(ngModel)]="user.name" #name="ngModel" required placeholder="enter"></div>
-<div *ngIf="!name.touched">fill name</div>
-<button [disabled]="!name.valid || !id.valid" (click)="search()">search</button>
-<div *ngIf="!name.valid && !id.valid">you must fill all field</div>
+<form #myForm="ngForm" (ngSubmit)="xxx(myForm)">
+  <div><input type="number" [(ngModel)]="user.id" #id="ngModel" name="id" required placeholder="enter"></div>
+  <div *ngIf="!id.touched">fill id</div>
+  <div><input type="string" [(ngModel)]="user.name" #name="ngModel" name="name" required placeholder="enter"></div>
+  <div *ngIf="!name.touched">fill name</div>
+  <button  [disabled]="!name.valid || !id.valid" (click)="search()">search</button>
+  <div *ngIf="!name.valid && !id.valid">you must fill all field</div>
+</form>

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {User} from "../models/User";
 import {UserService} from "../service/user.service";
+import {NgForm} from "@angular/forms";
 
 
 
@@ -22,10 +23,16 @@ export class AppComponent {
 
 
   search() {
-    this.userService.getUsersByIdOrName(this.user).subscribe(values => {
+    this.userService.getUsers().subscribe(values => {
      const filterUsers = this.userService.filterUsers(values, this.user)
       this.users = filterUsers
       console.log(this.users)
+
     });
+  }
+
+  xxx(myForm: NgForm) {
+    console.log(myForm.controls.id.value)
+    console.log(myForm.controls.name.value)
   }
 }

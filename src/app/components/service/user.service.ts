@@ -20,12 +20,14 @@ export class UserService {
     return  this.httpClient.get<User>(this.url + '/' + id)
   }
 
-  getUsersByIdOrName(user: User): Observable <User[]> {
+  getUsers(): Observable <User[]> {
    return this.httpClient.get<User[]>(this.url)
   }
 
+
   // @ts-ignore
   filterUsers(users: User[], user) : User[]{
+    console.log(user)
     return users.filter(value => value.id === user.id || value.name?.toLowerCase().includes(user.name.toLowerCase()))
   };
 
