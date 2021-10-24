@@ -8,6 +8,7 @@ import { User } from '../models/User';
   providedIn: 'root'
 })
 export class UserService {
+  [x: string]: any;
 
   users: User[];
 
@@ -19,13 +20,14 @@ export class UserService {
     return  this.httpClient.get<User>(this.url + '/' + id)
   }
 
-  getUserByIdOrName(user: User): User[] {
-    this.httpClient.get<User[]>(this.url)
-      .subscribe( value => {
-        const result = value.filter(user => user.id === user.id || user.name?.toLowerCase().includes(user.name.toLowerCase()))
-        this.users = result
-      });
-  return this.users
+  getUsersByIdOrName(user: User): Observable <User[]> {
+   return this.httpClient.get<User[]>(this.url)
   }
+
+  // @ts-ignore
+  filterUsers(users: User[], user) : User[]{
+    return users.filter(value => value.id === user.id || value.name?.toLowerCase().includes(user.name.toLowerCase()))
+  };
+
 
 }
