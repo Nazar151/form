@@ -1,9 +1,6 @@
-<div><input #id="ngModel" [(ngModel)]="user.id" required></div>
-<div *ngIf="!id.touched">id invalid</div>
-<br>
-<div><input #name="ngModel" [(ngModel)]="user.name" required></div>
-<div *ngIf="!name.touched">name invalid</div>
-<br>
-<button [disabled]="!name.valid && !id.valid" (click)="save(id, name)">save</button>
-<br>
+<div><input type="number" [(ngModel)]="user.id" #id="ngModel" required placeholder="enter"></div>
+<div *ngIf="!id.touched">fill id</div>
+<div><input type="string" [(ngModel)]="user.name" #name="ngModel" required placeholder="enter"></div>
+<div *ngIf="!name.touched">fill name</div>
+<button [disabled]="!name.valid || !id.valid" (click)="search()">search</button>
 <div *ngIf="!name.valid && !id.valid">you must fill all field</div>

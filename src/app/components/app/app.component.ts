@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import {UserService} from "../service/user.service";
+import {Component} from '@angular/core';
 import {User} from "../models/User";
-import {NgModel} from "@angular/forms";
+import {UserService} from "../service/user.service";
+
+
 
 
 @Component({
@@ -11,17 +12,17 @@ import {NgModel} from "@angular/forms";
 })
 export class AppComponent {
 
-  user : User = {
-    id: 1,
-    name: 'Nazar'
-  }
+  user: User = {}
+  id: number
+  name: string
+
 
   constructor(private userService : UserService) {
 
   }
+  search(): void {
+    console.log(this.userService.getUserByIdOrName(this.id, this.name));
 
-
-  save(id: NgModel, name: NgModel):void {
-    console.log(id)
   }
+
 }
